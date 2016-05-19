@@ -1,0 +1,20 @@
+{
+  "name": "aml",
+  "description": "Test app",
+  "authors": [
+    "Artem Bobrov <hello@bobrovartem.ru>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Angular"
+  ],
+  "moduleType": [],
+  "homepage": "http://bobrovartem.ru/aml",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "bootstrap": "^3.3.6",
+    "highcharts-ng": "^0.0.11",
+    "highcharts": "^4.2.5"
+  }
+}

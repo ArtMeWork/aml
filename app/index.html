@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AML Systems test app | Artem Bobrov</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- build:css:production css/style.min.css -->
+	<!-- /build -->
+	<!-- build:remove:production -->
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/main.css">
+	<!-- /build -->
+</head>
+<body ng-app="app">
+	<div class="top">
+		<div class="container">
+			<div class="site-name">Bobrov Artem</div>
+			<div class="nav-list">
+				<a href="#/main" class="nav-item" ng-class="{active: url.match('/main')}">Main page</a>
+				<a href="#/something" class="nav-item" ng-class="{active: url.match('/something')}">Something page</a>
+				<a href="#/a-non-existent-page" class="nav-item" ng-class="{active: url.match('/a-non-existent-page')}">A non-existent page</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<ng-view></ng-view>
+	</div>
+
+	<!-- build:js:production libs.min.js -->
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="bower_components/highcharts/highcharts.js"></script>
+		<script src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
+	<!-- /build -->
+
+	<!-- build:js:production app.min.js -->
+		<script src="app.js"></script>
+	<!-- /build -->
+
+	<!-- build:js:production modules/slider/module.min.js -->
+		<script src="modules/slider/angular-range-slider.min.js"></script>
+	<!-- /build -->
+
+	<!-- build:js:production modules/main/module.min.js -->
+		<script src="modules/main/main.js"></script>
+		<script src="modules/main/mainSort.controller.js"></script>
+		<script src="modules/main/mainSort.directive.js"></script>
+		<script src="modules/main/mainGraph.controller.js"></script>
+		<script src="modules/main/mainAnimate.controller.js"></script>
+	<!-- /build -->
+
+	<!-- build:js:production modules/something/module.min.js -->
+		<script src="modules/something/something.module.js"></script>
+	<!-- /build -->
+</body>
+</html>

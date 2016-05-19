@@ -1,0 +1,67 @@
+<h1>Main page</h1>
+
+<div class="panel panel-default">
+	<div class="panel-heading">Screens navigate</div>
+	<div class="panel-body">
+		<ol class="breadcrumb">
+			<li><a href="" ng-click="main.goToScreen('sort', $event)">Drag and Drop list</a></li>
+			<li><a href="" ng-click="main.goToScreen('graph', $event)">Graph</a></li>
+			<li><a href="" ng-click="main.goToScreen('animate', $event)">Animate</a></li>
+		</ol>
+	</div>
+</div>
+
+<div ng-controller="MainSortController as vm" class="panel panel-default" id="sort_screen">
+	<div class="panel-heading">Drag and Drop list</div>
+	<ul dragsort="vm.list" class="list-group" ng-class="{edit: vm.isEdit!==false}">
+		<li class="list-group-item" ng-repeat="item in vm.list track by item" ng-class="{active: vm.isEdit===$index}" dragsort-item="{{$index}}">
+			<div ng-hide="vm.isEdit === $index">
+				<span class="text" ng-bind="::item"></span>
+				<button class="btn btn-default btn-edit no-drag" ng-hide="vm.isEdit===$index" ng-click="vm.edit($index)">
+					<span class="glyphicon glyphicon-pencil no-drag"></span>
+				</button>
+			</div>
+			<div ng-show="vm.isEdit === $index">
+				<input type="text" class="text" ng-model="vm.temp">
+				<button class="btn btn-default" ng-click="vm.cancel()">
+					<span class="glyphicon glyphicon-remove-circle"></span>
+				</button>
+				<button class="btn btn-default" ng-click="vm.save($index)">
+					<span class="glyphicon glyphicon-ok-circle"></span>
+				</button>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div ng-controller="MainGraphController as vm" class="panel panel-default" id="graph_screen">
+	<div class="panel-heading">Graph</div>
+	<div class="panel-body">
+		<label>Set type:</label>
+		<input type="radio" id="main_chart_type_1" class="radio" ng-model="vm.highchartsNG.options.chart.type" value="column"><label for="main_chart_type_1">Columns</label>
+		<input type="radio" id="main_chart_type_2" class="radio" ng-model="vm.highchartsNG.options.chart.type" value="spline"><label for="main_chart_type_2">Lines</label>
+		<div class="chart">
+			<highchart config="vm.highchartsNG"></highchart>
+		</div>
+	</div>
+</div>
+
+<div ng-controller="MainAnimateController as vm" class="panel panel-default" id="animate_screen">
+	<div class="panel-heading">Animate</div>
+	<div class="panel-body">
+		<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center">
+			<p>{{vm.speed.name}}: {{vm.speed.value}}</p>
+			<div data-range-slider
+					 data-floor="500"
+					 data-ceiling="3000"
+					 data-step="100"
+					 data-precision="2"
+					 data-highlight="left"
+					 data-ng-model="vm.speed.value"></div>
+			<button type="button" class="btn btn-default btn-lg" ng-click="vm.pause()" ng-class="{active: vm.isPaused}">Pause</button>
+		</div>
+	</div>
+	<div class="animate-canvas">
+		<div class="ball" ng-style="vm.ball"></div>
+	</div>
+</div>
